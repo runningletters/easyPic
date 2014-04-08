@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.hekangping.easypic"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+
+        <!-- 使用这个属性可以禁止横屏  android:screenOrientation="landscape"  限制此页面横屏显示 ； "portrait"是限制此页面数竖屏显示。 -->
+        <activity
+            android:name="org.hekangping.easypic.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+			 如果配置了android:configChanges属性，
+			 当我们横竖屏切换的时候会直接调用onCreate方法中的onConfigurationChanged方法，
+			 而不会重新执行onCreate方法，那当然如果不配置这个属性的话就会重新调用onCreate方法了
+        -->
+
+        <activity
+            android:name="org.hekangping.easypic.SecondActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.hekangping.easypic.LoginActivity"
+            android:label="@string/title_activity_login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+    <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:label="Testing"
+        android:targetPackage="org.hekangping.easypic" />
+
+</manifest>

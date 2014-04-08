@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/edit_text"
+        android:ems="5"
+        android:hint="@string/username_tip"
+        android:maxLength="50"
+        android:singleLine="true" />
+
+    <ImageButton
+        android:id="@+id/ib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/et"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="#00000000"
+        android:contentDescription="@string/clearContent"
+        android:src="@drawable/menu_delete"
+        android:visibility="visible" />
+
+</RelativeLayout>

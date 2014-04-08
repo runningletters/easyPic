@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hekangping\'s App</string>
+    <string name="hello">Welcome</string>
+    <string name="username_tip">username</string>
+    <string name="password_tip">password</string>
+    <string name="phone_text">Phonenumber</string>
+    <string name="call_text">Call</string>
+    <string name="loginbutton_text">Login</string>
+    <string name="loading_text">Loading</string>
+    <string name="action_settings">settings</string>
+    <string name="secondpage">123465</string>
+    <string name="backBtn">Back</string>
+    <string name="quitBtn">LogOut</string>
+    <string name="backText">Back</string>
+    <string name="emptyListText">No data found.</string>
+    <string name="columnTitleId">ID</string>
+    <string name="columnTitleText">TEXT</string>
+    <string name="logouttip">Do you want to logout?</string>
+    <string name="ensure">Yes</string>
+    <string name="cancle">No</string>
+    <string name="clearContent">Clear input</string>
+    <string name="errMsg">Sorry,Application is exit with Exception.</string>
+    <string name="loading_data">Preparing data...</string>
+    <string name="username_null">Please input username</string>
+    <string name="username_err">Invalid username</string>
+    <string name="password_null">Please input password</string>
+    <string name="password_err">Password wrong</string>
+
+</resources>
