@@ -77,11 +77,11 @@ public class MainActivity extends Activity {
 		// 用户名输入框
 		EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
 		EditText objUserNameText = objEditCancel.getEt();
-		objUserNameText.setText("hello3");
+		objUserNameText.setText("hello10");
 		objEditCancel.setEt(objUserNameText);
 		// 密码输入框
 		EditText objPswText = (EditText) findViewById(R.id.password_text);
-		objPswText.setText("hello3");
+		objPswText.setText("hello10");
 
 		objPswText.setOnEditorActionListener(onEditorActionListener);
 		objPswText.addTextChangedListener(objTextWatcher);
@@ -280,8 +280,8 @@ public class MainActivity extends Activity {
 					 */
 				}
 			} else {
+				showToast(result);
 				if (result.contains("用户")) {
-					showToast(result);
 					// 用户名输入框
 					EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
 					EditText objUserNameText = objEditCancel.getEt();
@@ -293,7 +293,7 @@ public class MainActivity extends Activity {
 				if (result.contains("密码")) {
 					// 密码输入框
 					EditText objPswText = (EditText) findViewById(R.id.password_text);
-					objPswText.setError(result);
+					// objPswText.setError(result);
 					objPswText.requestFocus();
 				}
 			}
