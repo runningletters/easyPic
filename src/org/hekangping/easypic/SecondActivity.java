@@ -178,12 +178,6 @@ public class SecondActivity extends ListActivity {
 		List<Object> lstObject = new ArrayList<Object>(2);
 		lstObject.add(strHttpUrl);
 		lstObject.add(lstParams);
-		try {
-			Thread.sleep(1000);
-		} catch (Exception w) {
-
-		}
-
 		initProgressDialog();
 		// 异步查询数据
 		new FetchDataTask().execute(lstObject);
@@ -197,11 +191,6 @@ public class SecondActivity extends ListActivity {
 		@Override
 		protected String doInBackground(List<Object>... lstParams) {
 			Log.d(TAG, "doInBackground()");
-			try {
-				Thread.sleep(2000);
-			} catch (Exception w) {
-
-			}
 			String strRequestUrl = String.valueOf(lstParams[0].get(0));
 			List<NameValuePair> lstPairs = (List<NameValuePair>) lstParams[0]
 					.get(1);
@@ -218,7 +207,6 @@ public class SecondActivity extends ListActivity {
 				Log.d(TAG, "queryList()  发出请求:" + strRequestUrl);
 				// 请求HttpClient，取得HttpResponse
 				HttpResponse httpResponse = httpclient.execute(httpPost);
-				Thread.sleep(1000);
 				// 请求成功
 				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 					Log.d(TAG, "queryList()  请求成功:" + strRequestUrl + "参数:"
@@ -329,6 +317,7 @@ public class SecondActivity extends ListActivity {
 		progressDialog.setMax(100);
 		progressDialog.setMessage(getText(R.string.loading_data));
 		progressDialog.setProgress(0);
+		// 设置为true表示不确定的，进度一出现就显示动态进度；false表示精确的进度，一开始进度是0
 		progressDialog.setIndeterminate(false);
 		progressDialog.setCancelable(true);
 		progressDialog.show();
