@@ -14,7 +14,8 @@
         android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:ellipsize="end"
-        android:gravity="center" />
+        android:gravity="center"
+        android:singleLine="true" />
 
     <TextView
         android:id="@+id/dataContent"
@@ -24,6 +25,7 @@
         android:layout_marginTop="5dp"
         android:layout_weight="2"
         android:ellipsize="end"
-        android:gravity="center" />
+        android:gravity="center"
+        android:singleLine="true" />
 
 </LinearLayout>

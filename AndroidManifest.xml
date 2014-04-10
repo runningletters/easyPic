@@ -29,7 +29,7 @@
         <!--
 			 如果配置了android:configChanges属性，
 			 当我们横竖屏切换的时候会直接调用onCreate方法中的onConfigurationChanged方法，
-			 而不会重新执行onCreate方法，那当然如果不配置这个属性的话就会重新调用onCreate方法了
+			 而不会重新执行onCreate方法，那当然如果不配置这个属性的话就会重新调用onCreate方法了
         -->
 
         <activity
@@ -43,9 +43,6 @@
             android:name="org.hekangping.easypic.LoginActivity"
             android:label="@string/title_activity_login" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

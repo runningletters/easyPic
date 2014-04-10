@@ -37,8 +37,9 @@ public class MyAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		Log.d(TAG, "getCount()");
-		return list.size();
+		int iSize = list.size();
+		Log.d(TAG, "getCount()=" + iSize);
+		return iSize;
 	}
 
 	@Override
@@ -55,9 +56,9 @@ public class MyAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Log.d(TAG, "getView()");
 		if (convertView == null) {
-			convertView = mInflater.inflate(layoutID, parent, false);
+			Log.d(TAG, "getView() convertView == null");
+			convertView = mInflater.inflate(layoutID, null);
 			viewHolder = new ViewHolder();
 			viewHolder.idColumn = (TextView) convertView
 					.findViewById(R.id.dataIndex);
@@ -66,7 +67,7 @@ public class MyAdapter extends BaseAdapter {
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
-			// Log.d("MyAdapter", "¾ÉµÄconvertView,position=" + position);
+			Log.d("MyAdapter", "¾ÉµÄconvertView,position=" + position);
 		}
 		if (list != null && list.size() > 0) {
 			Map<String, Object> objDataMap = (Map<String, Object>) list

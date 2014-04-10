@@ -90,14 +90,14 @@ public class SecondActivity extends ListActivity {
 
 		listData = new ArrayList<HashMap<String, Object>>(10);
 		// 测试行列值溢出的数据
-		// HashMap<String, Object> objTestData = new HashMap<String, Object>();
-		// objTestData
-		// .put("id",
-		// "1234567980132456789013456789012345678shMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<Strin90132456789");
-		// objTestData
-		// .put("text",
-		// "abcdefg23145654655445744132shMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<Strin121254jijklmnopqrstuvwxyz");
-		// listData.add(objTestData);
+		/*HashMap<String, Object> objTestData = new HashMap<String, Object>();
+		objTestData
+				.put("id",
+						"1234567980132456789013456789012345678shMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<Strin90132456789");
+		objTestData
+				.put("text",
+						"abcdefg23145654655445744132shMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<StrinshMap<String, Object> objTestData = new HashMap<Strin121254jijklmnopqrstuvwxyz");
+		listData.add(objTestData);*/
 
 		// / 返回按钮绑定事件
 		objBackButton = (Button) this.findViewById(R.id.backButton);
@@ -218,7 +218,7 @@ public class SecondActivity extends ListActivity {
 						Log.d(TAG, "queryList()  请求失败:" + strRequestUrl + "参数:"
 								+ strParam);
 						objToast.toastShow("无数据");
-						return "";
+						return "无数据";
 					}
 					JSONObject jsonObject = new JSONObject(strResult);
 					String strRtnMsg = jsonObject.getString("data");

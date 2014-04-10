@@ -47,6 +47,22 @@ public class EditCancel extends LinearLayout implements EdtInterface {
 		this.et = et;
 	}
 
+	public void setValue(CharSequence text) {
+		this.et.setText(text);
+	}
+
+	public void setError(CharSequence error) {
+		this.et.setError(error);
+	}
+
+	public boolean focus() {
+		return this.et.requestFocus();
+	}
+
+	public CharSequence getValue() {
+		return this.et.getText();
+	}
+
 	private void init() {
 
 		myHandler = new MyHandler();

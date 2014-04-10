@@ -29,7 +29,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -39,9 +38,9 @@ import android.widget.TextView.OnEditorActionListener;
 
 public class MainActivity extends Activity {
 
-	private Button objLoginButton = null;
-
 	private static final String TAG = "MainActivity";
+
+	private Button objLoginButton = null;
 
 	private static final int REQUEST_CODE = 1;
 
@@ -76,9 +75,7 @@ public class MainActivity extends Activity {
 
 		// 用户名输入框
 		EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
-		EditText objUserNameText = objEditCancel.getEt();
-		objUserNameText.setText("hello10");
-		objEditCancel.setEt(objUserNameText);
+		objEditCancel.setValue("hello10");
 		// 密码输入框
 		EditText objPswText = (EditText) findViewById(R.id.password_text);
 		objPswText.setText("hello10");
@@ -91,10 +88,6 @@ public class MainActivity extends Activity {
 
 		// init Toast
 		objToast = new ToastShow(MainActivity.this);
-
-		// progressBar = (ProgressBar) findViewById(R.id.progressbar1);
-
-		// objMyHandler = new MyHandler();
 
 		Log.d(TAG, "onCreate() complete!");
 
@@ -158,22 +151,19 @@ public class MainActivity extends Activity {
 		Log.d(TAG, "doLogin()");
 		// 用户名输入框
 		EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
-		EditText objUserNameText = objEditCancel.getEt();
 		// 密码输入框
 		EditText objPswText = (EditText) findViewById(R.id.password_text);
 
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(objPswText.getWindowToken(), 0); // 强制隐藏键盘
 
-		String strName = objUserNameText.getText().toString().trim();
+		String strName = objEditCancel.getValue().toString().trim();
 		String strPsw = objPswText.getText().toString().trim();
 
 		if (strName.length() < 1) {
 			// objToast.toastShow(getText(R.string.username_null).toString());
-			objUserNameText.setText("");
-			objUserNameText
-					.setError(getText(R.string.username_null).toString());
-			objEditCancel.setEt(objUserNameText);
+			objEditCancel.setValue("");
+			objEditCancel.setError(getText(R.string.username_null).toString());
 			return;
 		}
 		if (strPsw.length() < 1) {
@@ -284,9 +274,9 @@ public class MainActivity extends Activity {
 				if (result.contains("用户")) {
 					// 用户名输入框
 					EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
-					EditText objUserNameText = objEditCancel.getEt();
+					// EditText objUserNameText = objEditCancel.getEt();
 					// objUserNameText.setError(result);
-					objUserNameText.requestFocus();
+					objEditCancel.focus();
 					// objEditCancel.setEt(objUserNameText);
 
 				}
@@ -320,9 +310,7 @@ public class MainActivity extends Activity {
 				&& resultCode == SecondActivity.RESULT_CODE) {
 			Bundle objBundle = data.getExtras();
 			EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
-			EditText objUserNameText = objEditCancel.getEt();
-			objUserNameText.setText(objBundle.getString("username"));
-			objEditCancel.setEt(objUserNameText);
+			objEditCancel.setValue(objBundle.getString("username"));
 
 			EditText objPswText = (EditText) findViewById(R.id.password_text);
 			objPswText.setText(objBundle.getString("password"));
@@ -342,12 +330,7 @@ public class MainActivity extends Activity {
 				return false;
 			} else {
 				// 退出
-				// System.exit(0); // 不好使
-				// MainActivity.this.finish(); // 不好使
-				Intent intent = new Intent(Intent.ACTION_MAIN);
-				intent.addCategory(Intent.CATEGORY_HOME);
-				startActivity(intent);
-				System.exit(0);
+				this.finish();
 				Log.d(TAG, new Date(currentTime) + "用户退出程序");
 				return true;
 			}
