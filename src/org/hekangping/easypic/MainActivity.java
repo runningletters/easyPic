@@ -75,10 +75,10 @@ public class MainActivity extends Activity {
 
 		// 用户名输入框
 		EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
-		objEditCancel.setValue("hello10");
+		objEditCancel.setValue("hello2");
 		// 密码输入框
 		EditText objPswText = (EditText) findViewById(R.id.password_text);
-		objPswText.setText("hello10");
+		objPswText.setText("hello2");
 
 		objPswText.setOnEditorActionListener(onEditorActionListener);
 		objPswText.addTextChangedListener(objTextWatcher);
