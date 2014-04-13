@@ -120,7 +120,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:dividerHeight="1dp"
-                android:fastScrollEnabled="true" />
+                android:fastScrollEnabled="true"
+                android:focusable="true" />
 
             <!-- ListView控件为空时显示   目前控制不好 -->
 

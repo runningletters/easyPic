@@ -27,6 +27,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -75,10 +77,10 @@ public class MainActivity extends Activity {
 
 		// 用户名输入框
 		EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
-		objEditCancel.setValue("hello2");
+		objEditCancel.setValue("hello10");
 		// 密码输入框
 		EditText objPswText = (EditText) findViewById(R.id.password_text);
-		objPswText.setText("hello2");
+		objPswText.setText("hello10");
 
 		objPswText.setOnEditorActionListener(onEditorActionListener);
 		objPswText.addTextChangedListener(objTextWatcher);
@@ -350,6 +352,26 @@ public class MainActivity extends Activity {
 		progressDialog.setIndeterminate(false);
 		progressDialog.setCancelable(true);
 		progressDialog.show();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }
