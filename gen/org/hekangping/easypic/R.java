@@ -1486,6 +1486,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int quitButton=0x7f050046;
+        public static final int quit_menu=0x7f050058;
         public static final int radio=0x7f05002f;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
@@ -1623,44 +1624,46 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
-        public static final int action_forgot_password=0x7f0a002c;
+        public static final int action_forgot_password=0x7f0a002e;
         public static final int action_settings=0x7f0a0015;
-        public static final int action_sign_in_register=0x7f0a002a;
-        public static final int action_sign_in_short=0x7f0a002b;
+        public static final int action_sign_in_register=0x7f0a002c;
+        public static final int action_sign_in_short=0x7f0a002d;
         public static final int app_name=0x7f0a000d;
         public static final int backBtn=0x7f0a0017;
         public static final int backText=0x7f0a0019;
+        public static final int backtip=0x7f0a001e;
         public static final int call_text=0x7f0a0012;
-        public static final int cancle=0x7f0a001f;
-        public static final int clearContent=0x7f0a0020;
+        public static final int cancle=0x7f0a0020;
+        public static final int clearContent=0x7f0a0021;
         public static final int columnTitleId=0x7f0a001b;
         public static final int columnTitleText=0x7f0a001c;
         public static final int emptyListText=0x7f0a001a;
-        public static final int ensure=0x7f0a001e;
-        public static final int errMsg=0x7f0a0021;
-        public static final int error_field_required=0x7f0a0031;
-        public static final int error_incorrect_password=0x7f0a0030;
-        public static final int error_invalid_email=0x7f0a002e;
-        public static final int error_invalid_password=0x7f0a002f;
+        public static final int ensure=0x7f0a001f;
+        public static final int errMsg=0x7f0a0022;
+        public static final int error_field_required=0x7f0a0033;
+        public static final int error_incorrect_password=0x7f0a0032;
+        public static final int error_invalid_email=0x7f0a0030;
+        public static final int error_invalid_password=0x7f0a0031;
         public static final int hello=0x7f0a000e;
-        public static final int loading_data=0x7f0a0022;
+        public static final int loading_data=0x7f0a0023;
         public static final int loading_text=0x7f0a0014;
-        public static final int login_progress_signing_in=0x7f0a002d;
+        public static final int login_progress_signing_in=0x7f0a002f;
         public static final int loginbutton_text=0x7f0a0013;
         public static final int logouttip=0x7f0a001d;
-        public static final int password_err=0x7f0a0026;
-        public static final int password_null=0x7f0a0025;
+        public static final int password_err=0x7f0a0027;
+        public static final int password_null=0x7f0a0026;
         public static final int password_tip=0x7f0a0010;
         public static final int phone_text=0x7f0a0011;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f0a0028;
-        public static final int prompt_password=0x7f0a0029;
+        public static final int prompt_email=0x7f0a002a;
+        public static final int prompt_password=0x7f0a002b;
         public static final int quitBtn=0x7f0a0018;
+        public static final int quit_menu_text=0x7f0a0028;
         public static final int secondpage=0x7f0a0016;
-        public static final int title_activity_login=0x7f0a0027;
-        public static final int username_err=0x7f0a0024;
-        public static final int username_null=0x7f0a0023;
+        public static final int title_activity_login=0x7f0a0029;
+        public static final int username_err=0x7f0a0025;
+        public static final int username_null=0x7f0a0024;
         public static final int username_tip=0x7f0a000f;
     }
     public static final class style {
