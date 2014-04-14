@@ -18,6 +18,7 @@
     <string name="columnTitleId">编号</string>
     <string name="columnTitleText">内容</string>
     <string name="logouttip">确定要注销吗？</string>
+    <string name="backtip">确定要返回登录页吗？\n列表数据将丢失。</string>
     <string name="ensure">确定</string>
     <string name="cancle">取消</string>
     <string name="clearContent">清除输入</string>

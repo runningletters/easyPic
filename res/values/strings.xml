@@ -18,6 +18,7 @@
     <string name="columnTitleId">ID</string>
     <string name="columnTitleText">TEXT</string>
     <string name="logouttip">Do you want to logout?</string>
+    <string name="backtip">Do you want to go back to login page?\nCurrent list data will lost.</string>
     <string name="ensure">Yes</string>
     <string name="cancle">No</string>
     <string name="clearContent">Clear input</string>
