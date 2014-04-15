@@ -12,7 +12,7 @@ public class MyApplication extends Application {
 		super.onCreate();
 		// 监听并处理未捕获的异常
 		CrashHandler crashHandler = CrashHandler.getInstance();
-		crashHandler.init(this.getApplicationContext());
+		//crashHandler.init(this.getApplicationContext());
 		Log.d(TAG, "MyApplication.onCreate() ");
 	}
 

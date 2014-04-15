@@ -15,6 +15,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.hekangping.easypic.util.NetUtil;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -39,6 +40,8 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 public class MainActivity extends Activity {
+
+	// TODO: 全局异常处理
 
 	private static final String TAG = "MainActivity";
 
@@ -170,6 +173,17 @@ public class MainActivity extends Activity {
 			return;
 		}
 
+		// 检查网络
+		boolean bNetWork = NetUtil.isNetworkAvailable(MainActivity.this);
+		if (!bNetWork) {
+			NetUtil.setNetworkMethod(MainActivity.this);
+			/*
+			 * String strNetMsg = getText(R.string.network_disabled).toString();
+			 * Log.i(TAG, strNetMsg); showToast(strNetMsg);
+			 */
+			return;
+		}
+
 		// objToast.toastShow("正在连接服务器");
 		initProgressDialog();
 
@@ -209,6 +223,9 @@ public class MainActivity extends Activity {
 			HttpClient httpclient = new DefaultHttpClient();
 			// HttpPost连接对象
 			HttpPost httpPost = new HttpPost(strRequestUrl);
+			// 网络异常时的提示信息
+			String strConnectFailed = getText(R.string.network_connect_failed)
+					.toString();
 			try {
 				// 请求HttpClient，取得HttpResponse
 				Log.d(TAG, "doLogin()  发出请求:" + strRequestUrl);
@@ -236,13 +253,13 @@ public class MainActivity extends Activity {
 					progressDialog.setProgress(current);
 
 				} else {
-					Log.d(TAG, "doLogin()  请求失败:" + strRequestUrl
-							+ " StatusCode" + iStatusCode);
-					strRtnMsg = "连接服务器失败，请检查网络连接" + "(" + iStatusCode + ")";
+					Log.d(TAG, "doLogin()   " + strRequestUrl + " StatusCode"
+							+ iStatusCode);
+					strRtnMsg = strConnectFailed + "(" + iStatusCode + ")";
 				}
 			} catch (Exception e) {
-				Log.e(TAG, "连接服务器失败，请检查网络连接", e);
-				strRtnMsg = "连接服务器失败，请检查网络连接";
+				Log.e(TAG, strConnectFailed, e);
+				strRtnMsg = strConnectFailed;
 			}
 			return strRtnMsg;
 		}
@@ -287,13 +304,6 @@ public class MainActivity extends Activity {
 			}
 		}
 
-		@Override
-		protected void onProgressUpdate(Integer... values) {
-			Log.d(TAG, "onProgressUpdate()");
-			// 这里是UI主线程
-			super.onProgressUpdate(values);
-			System.out.println(values[0]);
-		}
 	}
 
 	public void showToast(String showMsg) {
@@ -366,8 +376,8 @@ public class MainActivity extends Activity {
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			Intent objIntent = new Intent();
-			objIntent.setClass(MainActivity.this, SecondActivity.class);
-			startActivityForResult(objIntent, REQUEST_CODE);
+			objIntent.setClass(MainActivity.this, PrefsActivity.class);
+			startActivity(objIntent);
 			return true;
 		} else if (id == R.id.quit_menu) {
 			this.finish();

@@ -9,7 +9,7 @@
     <string name="call_text">Call</string>
     <string name="loginbutton_text">Login</string>
     <string name="loading_text">Loading</string>
-    <string name="action_settings">settings</string>
+    <string name="action_settings">Settings</string>
     <string name="secondpage">123465</string>
     <string name="backBtn">Back</string>
     <string name="quitBtn">LogOut</string>
@@ -29,5 +29,17 @@
     <string name="password_null">Please input password</string>
     <string name="password_err">Password wrong</string>
     <string name="quit_menu_text">Quit</string>
+    <string name="network_disabled">Network disabled</string>
+    <string name="network_connect_failed">Connection failed,please check NetWork settings</string>
+    <string name="network_setting_title">NetworkConfig</string>
+    <string name="network_setting_message">Network disabled,change settings?</string>
+    <string name="preference_default_username_title">default userName</string>
+    <string name="preference_default_username_summary">Setting default username to login</string>
+    <string name="preference_default_psw_title">password</string>
+    <string name="preference_default_psw_summary">default user\'s password</string>
+    <string name="preference_default_data_title">Data URL</string>
+    <string name="preference_default_data_summary">default fetch data by http://exam.szcomtop.com/mobile/list.ac</string>
+    <string name="preference_lazyload_data_title">Lazy-loading data</string>
+    <string name="preference_lazyload_data_summary">Lazy-loading Data request URL</string>
 
 </resources>

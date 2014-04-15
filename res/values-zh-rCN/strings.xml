@@ -29,5 +29,17 @@
     <string name="password_null">请输入密码</string>
     <string name="password_err">密码错误</string>
     <string name="quit_menu_text">退出</string>
+    <string name="network_disabled">网络连接不可用</string>
+    <string name="network_connect_failed">连接服务器失败，请检查网络连接</string>
+    <string name="network_setting_title">网络设置提示</string>
+    <string name="network_setting_message">网络连接不可用，是否进行设置？</string>
+    <string name="preference_default_username_title">默认用户</string>
+    <string name="preference_default_username_summary">设置后默认使用此用户登录</string>
+    <string name="preference_default_psw_title">密码</string>
+    <string name="preference_default_psw_summary">默认用户的密码</string>
+    <string name="preference_default_data_title">默认数据源网络地址</string>
+    <string name="preference_default_data_summary">默认访问http://exam.szcomtop.com/mobile/list.ac获取数据</string>
+    <string name="preference_lazyload_data_title">分页数据请求地址</string>
+    <string name="preference_lazyload_data_summary">使用此地址请求数据实现分页加载的效果</string>
 
 </resources>
