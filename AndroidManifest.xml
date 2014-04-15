@@ -8,7 +8,12 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
 
+    <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -31,7 +36,6 @@
 			 当我们横竖屏切换的时候会直接调用onCreate方法中的onConfigurationChanged方法，
 			 而不会重新执行onCreate方法，那当然如果不配置这个属性的话就会重新调用onCreate方法了
         -->
-
         <activity
             android:name="org.hekangping.easypic.SecondActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -46,8 +50,6 @@
             </intent-filter>
         </activity>
     </application>
-    <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"

@@ -28,5 +28,6 @@
     <string name="username_err">Invalid username</string>
     <string name="password_null">Please input password</string>
     <string name="password_err">Password wrong</string>
+    <string name="quit_menu_text">Quit</string>
 
 </resources>
