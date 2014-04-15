@@ -213,3 +213,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+gen/org/hekangping/easypic/R.java
+gen/android/support/v7/appcompat/R.java
