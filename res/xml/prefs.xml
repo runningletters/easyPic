@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <EditTextPreference
-        android:key="defaultUserName"
-        android:summary="@string/preference_default_username_summary"
-        android:title="@string/preference_default_username_title" />
-    <EditTextPreference
-        android:inputType="textPassword"
-        android:key="defaultUserPassword"
-        android:summary="@string/preference_default_psw_summary"
-        android:title="@string/preference_default_psw_title" />
-    <EditTextPreference
-        android:defaultValue="http://exam.szcomtop.com/mobile/list.ac"
-        android:key="DataURL"
-        android:summary="@string/preference_default_data_summary"
-        android:title="@string/preference_default_data_title" />
-    <EditTextPreference
-        android:defaultValue="http://exam.szcomtop.com/mobile/list1.ac"
-        android:key="DataLoadByStepURL"
-        android:summary="@string/preference_lazyload_data_summary"
-        android:title="@string/preference_lazyload_data_title" />
+    <PreferenceCategory
+        android:key="set_local"
+        android:title="登录信息" >
+        <EditTextPreference
+            android:key="defaultUserName"
+            android:summary="@string/preference_default_username_summary"
+            android:title="@string/preference_default_username_title" />
+        <EditTextPreference
+            android:inputType="textPassword"
+            android:key="defaultUserPassword"
+            android:summary="@string/preference_default_psw_summary"
+            android:title="@string/preference_default_psw_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="数据加载 " >
+        <EditTextPreference
+            android:defaultValue="http://exam.szcomtop.com/mobile/list.ac"
+            android:key="DataURL"
+            android:summary="@string/preference_default_data_summary"
+            android:title="@string/preference_default_data_title" />
+
+        <CheckBoxPreference
+            android:key="lazyloadingflag"
+            android:summary="启用后分页加载数据，每次仅加载一屏数据"
+            android:title="启用分页" />
+
+        <EditTextPreference
+            android:defaultValue="http://exam.szcomtop.com/mobile/list1.ac"
+            android:dependency="lazyloadingflag"
+            android:key="DataLoadByStepURL"
+            android:summary="@string/preference_lazyload_data_summary"
+            android:title="@string/preference_lazyload_data_title" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

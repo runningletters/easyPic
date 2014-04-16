@@ -26,6 +26,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -33,6 +35,7 @@ import android.media.RingtoneManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -74,6 +77,12 @@ public class SecondActivity extends ListActivity {
 	private static final String QUERY_PAGE_URL = "http://exam.szcomtop.com/mobile/list2.ac";
 
 	private ProgressDialog progressDialog;
+
+	/** 存储默认设置 */
+	private SharedPreferences prefs;
+
+	/**  */
+	private String queryDataUrl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -171,13 +180,27 @@ public class SecondActivity extends ListActivity {
 
 		});
 
+		// 首选项
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		prefs.registerOnSharedPreferenceChangeListener(new OnSharedPreferenceChangeListener() {
+
+			@Override
+			public void onSharedPreferenceChanged(
+					SharedPreferences sharedPreferences, String key) {
+			}
+
+		});
+
+		// 首选项中设置的默认加载数据的url
+		queryDataUrl = prefs.getString("DataURL", QUERY_URL);
+
 		// 查询数据
 		this.queryList();
 	}
 
 	private void queryList() {
 		Log.d(TAG, "queryList()");
-		String strHttpUrl = QUERY_URL;
+		String strHttpUrl = queryDataUrl;
 		List<NameValuePair> lstParams = new ArrayList<NameValuePair>(2);
 		lstParams.add(new BasicNameValuePair("user", strUserName));
 		lstParams.add(new BasicNameValuePair("query", "list"));

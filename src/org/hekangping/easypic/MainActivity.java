@@ -22,8 +22,11 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -41,7 +44,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 public class MainActivity extends Activity {
 
-	// TODO: 全局异常处理
+	// TODO: 全局异常处理 MyApplication
 
 	private static final String TAG = "MainActivity";
 
@@ -57,6 +60,7 @@ public class MainActivity extends Activity {
 
 	/** 验证用户登陆的url */
 	private static final String LOGIN_URL = "http://exam.szcomtop.com/mobile/login.ac";
+	private static String loginUrl;
 
 	/** 定义按键间隔时间为2秒(这个时间是toast提示的时间)，如果2秒内按了2次返回，则退出程序 */
 	private long waitTime = 2000;
@@ -64,6 +68,21 @@ public class MainActivity extends Activity {
 	private long touchTime = 0;
 
 	private ProgressDialog progressDialog;
+
+	/** 存储默认设置 */
+	private SharedPreferences prefs;
+
+	/** 首选项中设置的默认用户名 */
+	private String prefsName;
+
+	/** 首选项中设置的密码 */
+	private String prefsPsw;
+
+	/** 用户名输入框 */
+	EditCancel objEditCancel;
+
+	/** 密码输入框 */
+	EditText objPswText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +94,36 @@ public class MainActivity extends Activity {
 		Log.d(TAG, "setContentView(R.layout.fragment_main)");
 
 		// 用户名输入框
-		EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
-		objEditCancel.setValue("hello10");
+		objEditCancel = (EditCancel) findViewById(R.id.username_text);
+
 		// 密码输入框
-		EditText objPswText = (EditText) findViewById(R.id.password_text);
-		objPswText.setText("hello10");
+		objPswText = (EditText) findViewById(R.id.password_text);
+
+		// 首选项
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		prefs.registerOnSharedPreferenceChangeListener(new OnSharedPreferenceChangeListener() {
+
+			@Override
+			public void onSharedPreferenceChanged(
+					SharedPreferences sharedPreferences, String key) {
+				// 首选项中设置的默认用户名
+				prefsName = prefs.getString("defaultUserName", "");
+				// 首选项中设置的密码
+				prefsPsw = prefs.getString("defaultUserPassword", "");
+				// 将设置的值更新到登录界面
+				// TODO : bug 没有更新登录界面
+				setUserAndPsw(prefsName, prefsPsw);
+			}
+
+		});
+
+		// 首选项中设置的默认用户名
+		prefsName = prefs.getString("defaultUserName", "");
+		// 首选项中设置的密码
+		prefsPsw = prefs.getString("defaultUserPassword", "");
+
+		objEditCancel.setValue(prefsName);
+		objPswText.setText(prefsPsw);
 
 		objPswText.setOnEditorActionListener(onEditorActionListener);
 		objPswText.addTextChangedListener(objTextWatcher);
@@ -151,9 +195,9 @@ public class MainActivity extends Activity {
 	public void doLogin() {
 		Log.d(TAG, "doLogin()");
 		// 用户名输入框
-		EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
+		objEditCancel = (EditCancel) findViewById(R.id.username_text);
 		// 密码输入框
-		EditText objPswText = (EditText) findViewById(R.id.password_text);
+		objPswText = (EditText) findViewById(R.id.password_text);
 
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(objPswText.getWindowToken(), 0); // 强制隐藏键盘
@@ -227,18 +271,20 @@ public class MainActivity extends Activity {
 			String strConnectFailed = getText(R.string.network_connect_failed)
 					.toString();
 			try {
-				// 请求HttpClient，取得HttpResponse
-				Log.d(TAG, "doLogin()  发出请求:" + strRequestUrl);
+
 				// 设置请求参数并设置编码为utf-8格式
 				httpPost.setEntity(new UrlEncodedFormEntity(lstPairs,
 						HTTP.UTF_8));
 				// 请求HttpClient，取得HttpResponse
 				HttpResponse httpResponse = httpclient.execute(httpPost);
+				// 请求HttpClient，取得HttpResponse
+				Log.d(TAG, "doLogin()  发出请求:" + strRequestUrl + "?" + strParam);
 				int iStatusCode = httpResponse.getStatusLine().getStatusCode();
 				// 请求成功
 				if (iStatusCode == HttpStatus.SC_OK) {
 					current = 100;
-					Log.d(TAG, "doLogin()  请求成功:" + strRequestUrl);
+					Log.d(TAG, "doLogin()  请求成功:" + strRequestUrl + "?"
+							+ strParam);
 					// 取得返回的字符串
 					String strResult = EntityUtils.toString(httpResponse
 							.getEntity());
@@ -288,7 +334,7 @@ public class MainActivity extends Activity {
 				showToast(result);
 				if (result.contains("用户")) {
 					// 用户名输入框
-					EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
+					objEditCancel = (EditCancel) findViewById(R.id.username_text);
 					// EditText objUserNameText = objEditCancel.getEt();
 					// objUserNameText.setError(result);
 					objEditCancel.focus();
@@ -297,7 +343,7 @@ public class MainActivity extends Activity {
 				}
 				if (result.contains("密码")) {
 					// 密码输入框
-					EditText objPswText = (EditText) findViewById(R.id.password_text);
+					objPswText = (EditText) findViewById(R.id.password_text);
 					// objPswText.setError(result);
 					objPswText.requestFocus();
 				}
@@ -317,10 +363,10 @@ public class MainActivity extends Activity {
 		if (requestCode == REQUEST_CODE
 				&& resultCode == SecondActivity.RESULT_CODE) {
 			Bundle objBundle = data.getExtras();
-			EditCancel objEditCancel = (EditCancel) findViewById(R.id.username_text);
+			objEditCancel = (EditCancel) findViewById(R.id.username_text);
 			objEditCancel.setValue(objBundle.getString("username"));
 
-			EditText objPswText = (EditText) findViewById(R.id.password_text);
+			objPswText = (EditText) findViewById(R.id.password_text);
 			objPswText.setText(objBundle.getString("password"));
 		}
 		super.onActivityResult(requestCode, resultCode, data);
@@ -386,4 +432,16 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * 设置首选项后更新登录界面
+	 * 
+	 * @param user
+	 *            默认用户名
+	 * @param psw
+	 *            密码
+	 */
+	public void setUserAndPsw(String user, String psw) {
+		this.objEditCancel.setValue(user);
+		this.objPswText.setText(psw);
+	}
 }
