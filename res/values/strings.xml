@@ -41,5 +41,6 @@
     <string name="preference_default_data_summary">default fetch data by http://exam.szcomtop.com/mobile/list.ac</string>
     <string name="preference_lazyload_data_title">Lazy-loading data</string>
     <string name="preference_lazyload_data_summary">Lazy-loading Data request URL</string>
+    <string name="copyright">Copyright Hekangping.org 2014\nAll Rights Reserved.</string>
 
 </resources>

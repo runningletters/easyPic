@@ -57,6 +57,7 @@
             <intent-filter>
             </intent-filter>
         </activity>
+        <service android:name="org.hekangping.easypic.service.FetchDataService"></service>
     </application>
 
     <instrumentation

@@ -41,5 +41,6 @@
     <string name="preference_default_data_summary">默认访问http://exam.szcomtop.com/mobile/list.ac获取数据</string>
     <string name="preference_lazyload_data_title">分页数据请求地址</string>
     <string name="preference_lazyload_data_summary">使用此地址请求数据实现分页加载的效果</string>
+    <string name="copyright">版权所有\nHekangping.org 2014</string>
 
 </resources>

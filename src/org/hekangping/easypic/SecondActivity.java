@@ -15,6 +15,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.hekangping.easypic.service.FetchDataService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,6 +23,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -50,7 +52,10 @@ import android.widget.TextView;
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class SecondActivity extends ListActivity {
 	// TODO: http://www.eoeandroid.com/thread-52996-1-1.html
+	// TODO: 数据加载完成后notification提示，播放声音
 	// TODO:
+	// http://developer.android.com/guide/topics/ui/actionbar.html#ActionItems
+	// http://blog.csdn.net/xyz_lmn/article/details/8132420
 
 	private static final String TAG = "SecondActivity";
 
@@ -297,7 +302,8 @@ public class SecondActivity extends ListActivity {
 			// 条目点击事件
 			listView.setOnItemClickListener(new ItemClickListener());
 			// 播放系统提示音
-			playSound();
+			//playSound();
+			showNotification();
 			objToast.toastShow("共有" + listData.size() + "条数据");
 
 		}
@@ -338,6 +344,19 @@ public class SecondActivity extends ListActivity {
 		objDetailTitle.setText(strText);
 
 		builder.setView(layout).setPositiveButton("确定", null).show();
+	}
+
+	public void showNotification() {
+		Intent objIntent = new Intent(SecondActivity.this,
+				FetchDataService.class);
+		startService(objIntent);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		manager.cancel(FetchDataService.FETCH_DATA);
 	}
 
 	private void initProgressDialog() {

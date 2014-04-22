@@ -27,7 +27,7 @@
             android:title="启用分页" />
 
         <EditTextPreference
-            android:defaultValue="http://exam.szcomtop.com/mobile/list1.ac"
+            android:defaultValue="http://exam.szcomtop.com/mobile/list2.ac"
             android:dependency="lazyloadingflag"
             android:key="DataLoadByStepURL"
             android:summary="@string/preference_lazyload_data_summary"
