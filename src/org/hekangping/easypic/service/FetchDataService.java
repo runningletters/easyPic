@@ -22,7 +22,7 @@ public class FetchDataService extends IntentService {
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
-		Log.d(TAG, "");
+		Log.d(TAG, "onHandleIntent()");
 		startFetchData();
 	}
 

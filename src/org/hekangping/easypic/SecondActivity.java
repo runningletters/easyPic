@@ -100,8 +100,12 @@ public class SecondActivity extends ListActivity {
 
 		Intent objIntent = getIntent();
 		Bundle objBundle = objIntent.getExtras();
-		strUserName = objBundle.getString("username");
-		strPsw = objBundle.getString("password");
+
+		MyApplication application = (MyApplication) getApplication();
+		strUserName = application.getUsername();
+		strPsw = application.getPassword();
+		// strUserName = objBundle.getString("username");
+		// strPsw = objBundle.getString("password");
 		// String strResult = objBundle.getString("result");
 		// objToast.toastShow("用户" + strUserName + "登陆成功!");
 
@@ -302,7 +306,7 @@ public class SecondActivity extends ListActivity {
 			// 条目点击事件
 			listView.setOnItemClickListener(new ItemClickListener());
 			// 播放系统提示音
-			//playSound();
+			// playSound();
 			showNotification();
 			objToast.toastShow("共有" + listData.size() + "条数据");
 
@@ -355,6 +359,7 @@ public class SecondActivity extends ListActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		// 点击通知栏图标后删除通知
 		NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		manager.cancel(FetchDataService.FETCH_DATA);
 	}
@@ -474,6 +479,11 @@ public class SecondActivity extends ListActivity {
 
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
 	}
 
 }

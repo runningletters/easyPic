@@ -61,6 +61,7 @@ public class MainActivity extends ActionBarActivity {
 
 	/** 验证用户登陆的url */
 	private static final String LOGIN_URL = "http://exam.szcomtop.com/mobile/login.ac";
+
 	private static String loginUrl;
 
 	/** 定义按键间隔时间为2秒(这个时间是toast提示的时间)，如果2秒内按了2次返回，则退出程序 */
@@ -323,7 +324,12 @@ public class MainActivity extends ActionBarActivity {
 			if ("OK".equals(result)) {
 				Intent objIntent = new Intent();
 				objIntent.setClass(MainActivity.this, SecondActivity.class);
+				MyApplication application = (MyApplication) getApplication();
+				// 全局保存用户名
+				application.setUsername(loginSuccessUser);
 				objIntent.putExtra("username", loginSuccessUser);
+				// 全局保存密码
+				application.setPassword(loginSuccessUser);
 				objIntent.putExtra("password", loginSuccessPassword);
 				startActivityForResult(objIntent, REQUEST_CODE);
 				// 添加界面切换效果，注意只有Android的2.0(SdkVersion版本号为5)以后的版本才支持

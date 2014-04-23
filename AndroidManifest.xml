@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".MyApplication"
@@ -35,7 +36,7 @@
         <!--
 			 如果配置了android:configChanges属性，
 			 当我们横竖屏切换的时候会直接调用onCreate方法中的onConfigurationChanged方法，
-			 而不会重新执行onCreate方法，那当然如果不配置这个属性的话就会重新调用onCreate方法了
+			 而不会重新执行onCreate方法，那当然如果不配置这个属性的话就会重新调用onCreate方法了
         -->
         <activity
             android:name="org.hekangping.easypic.SecondActivity"
@@ -57,7 +58,9 @@
             <intent-filter>
             </intent-filter>
         </activity>
-        <service android:name="org.hekangping.easypic.service.FetchDataService"></service>
+
+        <service android:name="org.hekangping.easypic.service.FetchDataService" >
+        </service>
     </application>
 
     <instrumentation
