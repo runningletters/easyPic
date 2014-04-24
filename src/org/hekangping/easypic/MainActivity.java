@@ -62,7 +62,6 @@ public class MainActivity extends ActionBarActivity {
 	/** 验证用户登陆的url */
 	private static final String LOGIN_URL = "http://exam.szcomtop.com/mobile/login.ac";
 
-	private static String loginUrl;
 
 	/** 定义按键间隔时间为2秒(这个时间是toast提示的时间)，如果2秒内按了2次返回，则退出程序 */
 	private long waitTime = 2000;

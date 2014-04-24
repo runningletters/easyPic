@@ -29,12 +29,12 @@ public class FetchDataService extends IntentService {
 	private void startFetchData() {
 		Notification objNotification = new Notification(R.drawable.ic_launcher,
 				"Fetching data...", System.currentTimeMillis());
-		Intent objIntent = new Intent();
-		objIntent.setClass(this, SecondActivity.class);
+		Intent objIntent = new Intent(this, SecondActivity.class);
 		PendingIntent objPendingIntent = PendingIntent.getActivity(this, 0,
 				objIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		objNotification.setLatestEventInfo(this, "Fetching data",
 				"All data loaded.", objPendingIntent);
+		objNotification.flags = Notification.FLAG_AUTO_CANCEL;
 		objNotification.defaults = Notification.DEFAULT_ALL;
 		NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		manager.notify(FETCH_DATA, objNotification);

@@ -53,7 +53,7 @@ import android.widget.TextView;
 public class SecondActivity extends ListActivity {
 	// TODO: http://www.eoeandroid.com/thread-52996-1-1.html
 	// TODO: 数据加载完成后notification提示，播放声音
-	// TODO:
+	// TODO: 下拉刷新 
 	// http://developer.android.com/guide/topics/ui/actionbar.html#ActionItems
 	// http://blog.csdn.net/xyz_lmn/article/details/8132420
 
@@ -484,6 +484,36 @@ public class SecondActivity extends ListActivity {
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	protected void onRestart() {
+		Log.d(TAG, "onRestart()");
+		super.onRestart();
+	}
+
+	@Override
+	protected void onResume() {
+		Log.d(TAG, "onResume()");
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		Log.d(TAG, "onPause()");
+		super.onPause();
+	}
+
+	@Override
+	protected void onStop() {
+		Log.d(TAG, "onStop()");
+		super.onStop();
+	}
+
+	@Override
+	protected void onDestroy() {
+		Log.d(TAG, "onDestroy()");
+		super.onDestroy();
 	}
 
 }
